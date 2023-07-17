@@ -3,6 +3,7 @@
 export function buildCountriesSelectBox(countriesList) {
     console.log('exec')
     const selectEl = document.createElement('select')
+    selectEl.id = 'select-countries'
 
     console.log(`length: ${countriesList.length}`)
     console.log(countriesList)
@@ -64,6 +65,7 @@ function createCountryComponentElements(country) {
     const countryInfoEl = document.getElementById('specific-country-component')
 
     const flagDiv = document.createElement('img')
+    flagDiv.classList.add('flag-img')
     flagDiv.style.height = '250px'
     flagDiv.style.width = '400px'
     flagDiv.style.marginBottom = '10px'
@@ -84,8 +86,9 @@ function createCountryComponentElements(country) {
         
         nameH1.innerHTML = "No Country Yet."
 
-        countryInfoEl.appendChild(flagDiv)
-        countryInfoEl.appendChild(nameH1)
+        // countryInfoEl.appendChild(flagDiv)
+        // countryInfoEl.appendChild(nameH1)
+        countryInfoEl.replaceChildren(flagDiv, nameH1)
 
     } else {
         console.log('building')

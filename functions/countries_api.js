@@ -11,7 +11,10 @@ export async function getCountries() {
             countriesList = data.map(d => d.name.common)
         })
     console.log(`LEN: ${countriesList.length}`)
-    return countriesList.sort()
+    countriesList = countriesList.sort()
+    countriesList.unshift("Not Selected")
+
+    return countriesList
 }
 
 export async function getCountryInfo(name) {
@@ -22,7 +25,7 @@ export async function getCountryInfo(name) {
         .then(r => r.json())
         .then(data => {
             const d = data[0]
-            
+
             if (data.length > 0) {
 
                 countryInfo = {

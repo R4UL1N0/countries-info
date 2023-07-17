@@ -5,6 +5,7 @@ async function initApp() {
     const countriesNames = await getCountries()
 
     buildCountriesDiv(countriesNames)
+    buildCountriesSelectBox(countriesNames)
     buildCountryComponent()
     onCountryButtonClick()
 
@@ -30,5 +31,14 @@ function onCountryButtonClick() {
                 })
         }
 
+    })
+
+    document.getElementById('select-countries').addEventListener('change', function(e) {
+        getCountryInfo(e.target.value)
+                .then(data => {
+                    
+                    console.log(data)
+                    buildCountryComponent(data)
+                })
     })
 }
