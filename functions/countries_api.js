@@ -14,15 +14,32 @@ export async function getCountries() {
     return countriesList.sort()
 }
 
-export function getCountryInfo(name) {
+export async function getCountryInfo(name) {
 
-    fetch(`https://restcountries.com/v3.1/name/${name.toLowerCase()}`)
+    let countryInfo 
+
+    await fetch(`https://restcountries.com/v3.1/name/${name.toLowerCase()}`)
         .then(r => r.json())
         .then(data => {
-            const name = data.name.common
-            const capital = data.capital
-            const region = data.region
-            const subregion = data.subregion
+            const d = data[0]
+            
+            if (data.length > 0) {
 
+                countryInfo = {
+                    "name": d.name.common,
+                    "officialName": d.name.official,
+                    "capital": d.capital,
+                    "region": d.region,
+                    "subregion": d.subregion,
+                    "languages": d.languages,
+                    "flag": d.flags.png,
+                    "flagDescription": d.flags.alt,
+                    "latLng": d.latlng,
+                    "population": d.population
+                }
+            }
+           
         })
+
+        return countryInfo
 }

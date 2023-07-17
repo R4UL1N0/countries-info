@@ -1,15 +1,37 @@
 *, html {
     box-sizing: border-box;
     margin: 0;
+    /* height: 100vh; */
 }
 
-#countries-page {
-    background-color: aquamarine;
-    width: 100vw;
+body { 
     height: 100vh;
-    display: grid;
-    align-items: center;
+    background-image: url('./assets/world_map.jpg');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: center;
 
+}
+
+#custom-nav {
+    /* width: 100%; */
+    height: 3em;
+    background-color: orange;
+}
+
+section {
+    /* height: 100vh; */
+}
+ 
+
+#countries-page {
+    width: 100vw;
+    /* height: 100vh; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    padding: 40px;
+    
 }
 
 #countries-div {
@@ -18,7 +40,30 @@
     padding: 20px;
     overflow: auto;
     width: 20vw;
+    border-radius: 50px;
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #888888;
+    scrollbar-width: 10px;
+    border: 10px solid white
 }
+
+/* For WebKit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px; /* Adjust the width as needed */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* Adjust the background color as needed */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Adjust the thumb color as needed */
+    border-radius: 15%;
+  }
+  
+  ::-webkit-scrollbar-button {
+    display: none; /* Hide the scrollbar buttons */
+  }
 
 .country-text {
     font-size: 30px;
@@ -27,8 +72,20 @@
 
 .country-text:hover {
     background-color: grey;
+    border-radius: 5px;
 }
 
 #specific-country-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    height: 70vh;
+    border-radius: 5%;
+}
 
+#specific-country-component p {
+    font-size: 1.5em;
 }
